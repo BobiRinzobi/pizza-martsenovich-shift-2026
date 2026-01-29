@@ -21,3 +21,13 @@ dependencyResolutionManagement {
 
 rootProject.name = "Pizza"
 include(":app")
+include(":component")
+include(":feature")
+include(":shared")
+include(":util")
+include(":feature:pizza")
+include(":feature:orders")
+include(":feature:basket")
+include(":feature:profile")
+include(":feature:details")
+include(":shared:pizza")
