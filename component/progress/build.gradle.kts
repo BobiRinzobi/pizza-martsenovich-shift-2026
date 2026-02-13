@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.phoenix.basket"
+    namespace = "com.phoenix.progress"
     compileSdk = 35
 
     defaultConfig {
@@ -31,16 +31,20 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
     buildFeatures {
         compose = true
     }
+
 }
 
 dependencies {
-    implementation(project(":shared:user"))
+    implementation(project(":shared:pizza"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     // Compose
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
@@ -48,6 +52,9 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.tiles.tooling.preview)
+//    implementation(project(":app"))
 
     // Превью для Compose
     debugImplementation(libs.androidx.ui.tooling)
@@ -71,5 +78,6 @@ dependencies {
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.core)
     implementation(libs.koin.compose)
+    debugImplementation(libs.androidx.compose.ui.tooling)
 
 }

@@ -1,4 +1,4 @@
-package com.phoenix.pizza
+package com.phoenix.pizza.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

@@ -7,6 +7,6 @@ enum class PizzaSizeType {
 }
 
 data class PizzaSize(
-    val price : Int,
-    val type: PizzaSizeType
+    val type: PizzaSizeType,
+    val price : Int
 )
