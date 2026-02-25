@@ -1,5 +1,7 @@
-package com.phoenix.details.domain.entity
+package com.phoenix.pizza.domain
 
+import kotlinx.serialization.Serializable
+@Serializable
 enum class PizzaIngredientType{
     PINEAPPLE,
     MOZZARELLA,
@@ -21,6 +23,7 @@ enum class PizzaIngredientType{
     MEATBALLS
 }
 
+@Serializable
 data class PizzaIngredient(
     val img : String,
     val price : Int,

@@ -1,7 +1,9 @@
 package com.phoenix.pizza.ui
 
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -14,6 +16,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,7 +42,7 @@ import com.phoenix.progress.R
 
 
 @Composable
-internal fun PizzaListScreen(
+fun PizzaListScreen(
     PizzaListViewModel : PizzaListViewModel,
     modifier: Modifier = Modifier
 ) {
@@ -55,7 +58,12 @@ internal fun PizzaListScreen(
         when (val currentState = state){
             is PizzaListState.Initial,
             is PizzaListState.Loading -> FullScreenProgressIndicator()
-            is PizzaListState.Content -> PizzaContentList(PizzaListItems = currentState.pizza)
+            is PizzaListState.Content -> PizzaContentList(
+                PizzaListItems = currentState.pizza,
+                onItemClick = { pizzaId ->
+                    println("Нажата пицца с id: $pizzaId")
+                    // TODO: навигация
+                })
             is PizzaListState.Error -> PizzaError()
 
         }
@@ -66,25 +74,46 @@ internal fun PizzaListScreen(
 
 @Composable
 fun PizzaError() {
-    TODO("Not yet implemented")
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = "Произошла ошибка при загрузке",
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.error
+        )
+    }
 }
 
 @Composable
-fun PizzaContentList(PizzaListItems : List<PizzaListItem> ) {
+fun PizzaContentList(
+    PizzaListItems : List<PizzaListItem>,
+    onItemClick: (String) -> Unit) {
     LazyColumn(
         Modifier.fillMaxSize()) {
         items(PizzaListItems){item ->
-            PizzaContentListItem(item = item)
+            PizzaContentListItem(item = item,onItemClick = onItemClick)
         }
     }
 
 }
 
 @Composable
-fun PizzaContentListItem(item : PizzaListItem) {
+fun PizzaContentListItem(
+    item : PizzaListItem,
+    onItemClick: (String) -> Unit )
+{
 
     val baseUrl = "https://shift-intensive.ru"
-
+    Card(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .clickable{onItemClick(item.id)},
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline)
+    ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -128,7 +157,7 @@ fun PizzaContentListItem(item : PizzaListItem) {
             )
         }
     }
-
+}
 }
 
 @Composable
@@ -138,35 +167,4 @@ fun Title() {
         text = "Пиццы",
         style = MaterialTheme.typography.titleLarge
     )
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun PizzaContentListPreview() {
-
-    val testPizzas = listOf(
-        PizzaListItem(
-            id = "1",
-            name = "ШИФТ Суприм",
-            description = "Шифт пицца с пепперони, колбасой, зеленым перцем, луком, оливками и шампиньонами.",
-            img = "/static/images/pizza/1.webp",
-            sizes = arrayOf(
-                PizzaSize(PizzaSizeType.SMALL,499 ),
-                PizzaSize(PizzaSizeType.MEDIUM, 650)
-            )
-        ),
-        PizzaListItem(
-            id = "2",
-            name = "Маргарита",
-            description = "Классическая пицца с томатным соусом, моцареллой и листьями базилика",
-            img = "/static/images/pizza/2.webp",
-            sizes = arrayOf(
-                PizzaSize(PizzaSizeType.SMALL,499 ),
-                PizzaSize(PizzaSizeType.MEDIUM, 650)
-            )
-        )
-    )
-
-    PizzaContentList(PizzaListItems = testPizzas)
 }

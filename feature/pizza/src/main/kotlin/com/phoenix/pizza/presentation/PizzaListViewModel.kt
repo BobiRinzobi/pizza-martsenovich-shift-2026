@@ -30,8 +30,10 @@ class PizzaListViewModel(
                     pizza = PizzaListItems
                 )
 
-            }catch (e : Exception){
-                _state.value = PizzaListState.Error(messaage = e.message.orEmpty())
+            }catch (e: Exception) {
+                e.printStackTrace()
+                _state.value = PizzaListState.Error(message = "Ошибка: ${e::class.simpleName} - ${e.message}"
+                )
             }
 
         }

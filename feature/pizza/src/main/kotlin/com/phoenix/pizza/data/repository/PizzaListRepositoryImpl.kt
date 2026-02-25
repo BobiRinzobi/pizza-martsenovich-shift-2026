@@ -9,6 +9,6 @@ class PizzaListRepositoryImpl (
     private val pizzaConverter: PizzaConverter
 ) : PizzaListRepository {
     override suspend fun getPizzas(): List<PizzaListItem> =
-        dataSource.getPizzas().map { pizzaConverter.convert(it) }
+        dataSource.getPizzas().catalog.map { pizzaConverter.convert(it) }
 
 }

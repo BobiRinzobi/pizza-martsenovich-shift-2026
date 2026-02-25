@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.phoenix.details"
+    namespace = "com.phoenix.pizza.feature.details"
     compileSdk = 35
 
     defaultConfig {
-        minSdk = 24
+        minSdk = 26
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

@@ -12,7 +12,20 @@ class PizzaConverter{
             id = model.id,
             name = model.name,
             description = model.description,
-            img = model.img ,
-            sizes = model.sizes
+            img = model.img,
+            sizes = model.sizes,
+            allergens = model.allergens,
+            calories = model.calories,
+            carbohydrates = model.carbohydrates,
+            doughs = model.doughs,
+            ingredients = model.ingredients,
+            isGlutenFree =  model.isGlutenFree,
+            isHit = model.isHit,
+            isNew = model.isNew,
+            isVegetarian = model.isVegetarian,
+            protein = model.protein,
+            sodium = model.sodium,
+            toppings = model.toppings,
+            totalFat = model.totalFat
             )
 }

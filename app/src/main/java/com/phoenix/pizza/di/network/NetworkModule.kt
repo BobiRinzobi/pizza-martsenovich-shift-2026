@@ -13,14 +13,17 @@ import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import java.util.concurrent.TimeUnit
 
-private const val BASE_URL = "https://shift-intensive.ru/api/android/"
+private const val BASE_URL = "https://shift-intensive.ru/"
 private const val CONNECT_TIMEOUT = 10L
 private const val WRITE_TIMEOUT = 10L
 private const val READ_TIMEOUT = 10L
 
 val networkModule = module {
     single {
-        Json.asConverterFactory("application/json; charset=UTF8".toMediaType())
+        Json {
+            ignoreUnknownKeys = true
+            coerceInputValues = true
+        }.asConverterFactory("application/json; charset=UTF8".toMediaType())
     }
 
     single(named("logging")) {

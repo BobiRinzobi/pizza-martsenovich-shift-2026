@@ -1,7 +1,6 @@
 package com.phoenix.details.data.repository
-
-import com.phoenix.details.domain.entity.PizzaDough
-import com.phoenix.details.domain.entity.PizzaIngredient
+import com.phoenix.pizza.domain.PizzaDough
+import com.phoenix.pizza.domain.PizzaIngredient
 import com.phoenix.pizza.domain.PizzaSize
 import kotlinx.serialization.Serializable
 

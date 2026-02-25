@@ -1,5 +1,7 @@
 package com.phoenix.details.domain.entity
 
+import com.phoenix.pizza.domain.PizzaDough
+import com.phoenix.pizza.domain.PizzaIngredient
 import com.phoenix.pizza.domain.PizzaSize
 
 data class Pizza(

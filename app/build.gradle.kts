@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.phoenix.pizza"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime.livedata)
+    implementation(project(":feature:pizza"))
 
     // Превью для Compose
     debugImplementation(libs.androidx.ui.tooling)

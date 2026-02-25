@@ -5,5 +5,5 @@ import retrofit2.http.GET
 
 interface PizzaApi {
     @GET("/api/pizza/catalog")
-    suspend fun getPizzas() : List<PizzaModel>
+    suspend fun getPizzas(): CatalogResponse  
 }

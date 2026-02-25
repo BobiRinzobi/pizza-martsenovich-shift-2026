@@ -2,8 +2,8 @@ package com.phoenix.details.data.converter
 
 import com.phoenix.details.data.repository.PizzaModel
 import com.phoenix.details.domain.entity.Pizza
-import com.phoenix.details.domain.entity.PizzaDough
-import com.phoenix.details.domain.entity.PizzaIngredient
+import com.phoenix.pizza.domain.PizzaDough
+import com.phoenix.pizza.domain.PizzaIngredient
 import com.phoenix.pizza.domain.PizzaSize
 import kotlin.String
 
